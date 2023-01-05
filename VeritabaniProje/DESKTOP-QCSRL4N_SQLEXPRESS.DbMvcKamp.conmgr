@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DESKTOP-QCSRL4N_SQLEXPRESS.DbMvcKamp"
+  DTS:DTSID="{DBF9E824-8D36-4DAF-83BE-4BA5BEA42293}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=DESKTOP-QCSRL4N\SQLEXPRESS;Initial Catalog=DbMvcKamp;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-VeritabaniProje-{DBF9E824-8D36-4DAF-83BE-4BA5BEA42293}DESKTOP-QCSRL4N\SQLEXPRESS.DbMvcKamp;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

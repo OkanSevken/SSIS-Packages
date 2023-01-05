@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DESKTOP-QCSRL4N_SQLEXPRESS.STAGING"
+  DTS:DTSID="{76F88A45-9A34-4AB2-BECE-98819B63961A}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=DESKTOP-QCSRL4N\SQLEXPRESS;Initial Catalog=STAGING;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-VeritabaniProje-{76F88A45-9A34-4AB2-BECE-98819B63961A}DESKTOP-QCSRL4N\SQLEXPRESS.STAGING;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

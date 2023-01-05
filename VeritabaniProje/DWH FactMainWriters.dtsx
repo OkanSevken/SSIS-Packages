@@ -1,0 +1,714 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/11/2022 4:58:33 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-QCSRL4N"
+  DTS:CreatorName="DESKTOP-QCSRL4N\okan"
+  DTS:DTSID="{895F9D21-89D0-4B6E-ABC3-E3107E49CABB}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.948.0"
+  DTS:LocaleID="1055"
+  DTS:ObjectName="DWH FactMainWriters"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{872AA0EA-519D-475B-9B40-8877BA86A517}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-QCSRL4N\SQLEXPRESS.DWH]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{05A2616D-B0D4-44A0-B016-CA278C2550D6}"
+      DTS:ObjectName="DESKTOP-QCSRL4N\SQLEXPRESS.DWH">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-QCSRL4N\SQLEXPRESS;Initial Catalog=DWH;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-DWH FactMainWriters-{05A2616D-B0D4-44A0-B016-CA278C2550D6}DESKTOP-QCSRL4N\SQLEXPRESS.DWH;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2E9B0C56-B84E-4722-B412-E350911DBA88}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\DWH FactMainWriters Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DWH FactMainWriters Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FactMainWriters]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1254</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\DWH FactMainWriters Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-QCSRL4N\SQLEXPRESS.DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-QCSRL4N\SQLEXPRESS.DWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].Columns[WriterID]"
+                      cachedDataType="i4"
+                      cachedName="WriterID"
+                      externalMetadataColumnId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].ExternalColumns[WriterID]"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[WriterID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].Columns[WriterName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="WriterName"
+                      externalMetadataColumnId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].ExternalColumns[WriterName]"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[WriterName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].Columns[WriterSurname]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="WriterSurname"
+                      externalMetadataColumnId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].ExternalColumns[WriterSurname]"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[WriterSurname]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].Columns[WriterMail]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="WriterMail"
+                      externalMetadataColumnId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].ExternalColumns[WriterMail]"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[WriterMail]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].Columns[WriterPassword]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="WriterPassword"
+                      externalMetadataColumnId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].ExternalColumns[WriterPassword]"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[WriterPassword]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].Columns[WriterAbout]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="WriterAbout"
+                      externalMetadataColumnId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].ExternalColumns[WriterAbout]"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[WriterAbout]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].Columns[WriterTitle]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="WriterTitle"
+                      externalMetadataColumnId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].ExternalColumns[WriterTitle]"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[WriterTitle]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].Columns[WriterStatuss]"
+                      cachedDataType="bool"
+                      cachedName="WriterStatuss"
+                      externalMetadataColumnId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].ExternalColumns[WriterStatuss]"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[WriterStatuss]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].Columns[HeadingID]"
+                      cachedDataType="i4"
+                      cachedName="HeadingID"
+                      externalMetadataColumnId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].ExternalColumns[HeadingID]"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[HeadingID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].Columns[HeadingName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="HeadingName"
+                      externalMetadataColumnId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].ExternalColumns[HeadingName]"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[HeadingName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].Columns[HeadingDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="HeadingDate"
+                      externalMetadataColumnId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].ExternalColumns[HeadingDate]"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[HeadingDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].Columns[HeadingStatus]"
+                      cachedDataType="bool"
+                      cachedName="HeadingStatus"
+                      externalMetadataColumnId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].ExternalColumns[HeadingStatus]"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[HeadingStatus]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].ExternalColumns[WriterID]"
+                      dataType="i4"
+                      name="WriterID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].ExternalColumns[WriterName]"
+                      dataType="wstr"
+                      length="50"
+                      name="WriterName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].ExternalColumns[WriterSurname]"
+                      dataType="wstr"
+                      length="50"
+                      name="WriterSurname" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].ExternalColumns[WriterMail]"
+                      dataType="wstr"
+                      length="200"
+                      name="WriterMail" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].ExternalColumns[WriterPassword]"
+                      dataType="wstr"
+                      length="200"
+                      name="WriterPassword" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].ExternalColumns[WriterAbout]"
+                      dataType="wstr"
+                      length="100"
+                      name="WriterAbout" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].ExternalColumns[WriterTitle]"
+                      dataType="wstr"
+                      length="50"
+                      name="WriterTitle" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].ExternalColumns[WriterStatuss]"
+                      dataType="bool"
+                      name="WriterStatuss" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].ExternalColumns[HeadingID]"
+                      dataType="i4"
+                      name="HeadingID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].ExternalColumns[HeadingName]"
+                      dataType="wstr"
+                      length="50"
+                      name="HeadingName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].ExternalColumns[HeadingDate]"
+                      dataType="dbTimeStamp"
+                      name="HeadingDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input].ExternalColumns[HeadingStatus]"
+                      dataType="bool"
+                      name="HeadingStatus" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\DWH FactMainWriters Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DWH FactMainWriters Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DWH FactMainWriters Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DWH FactMainWriters Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\STG Writers Headigs Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="STG Writers Headigs Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT W.WriterID ,
+w.WriterName,
+w.WriterSurname,
+w.WriterMail,
+w.WriterPassword,
+w.WriterAbout,
+w.WriterTitle,
+w.WriterStatuss,
+h.HeadingID,
+h.HeadingName,
+h.HeadingDate,
+h.HeadingStatus
+  FROM [DbMvcKamp].[dbo].[Writers] W
+  LEFT JOIN DbMvcKamp.dbo.Headings H on W.WriterID=H.WriterID</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1254</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\STG Writers Headigs Source.Connections[OleDbConnection]"
+                  connectionManagerID="{76F88A45-9A34-4AB2-BECE-98819B63961A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-QCSRL4N_SQLEXPRESS.STAGING]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[WriterID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].ExternalColumns[WriterID]"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[WriterID]"
+                      name="WriterID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[WriterName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].ExternalColumns[WriterName]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[WriterName]"
+                      name="WriterName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[WriterSurname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].ExternalColumns[WriterSurname]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[WriterSurname]"
+                      name="WriterSurname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[WriterMail]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].ExternalColumns[WriterMail]"
+                      length="200"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[WriterMail]"
+                      name="WriterMail"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[WriterPassword]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].ExternalColumns[WriterPassword]"
+                      length="200"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[WriterPassword]"
+                      name="WriterPassword"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[WriterAbout]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].ExternalColumns[WriterAbout]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[WriterAbout]"
+                      name="WriterAbout"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[WriterTitle]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].ExternalColumns[WriterTitle]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[WriterTitle]"
+                      name="WriterTitle"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[WriterStatuss]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].ExternalColumns[WriterStatuss]"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[WriterStatuss]"
+                      name="WriterStatuss"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[HeadingID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].ExternalColumns[HeadingID]"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[HeadingID]"
+                      name="HeadingID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[HeadingName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].ExternalColumns[HeadingName]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[HeadingName]"
+                      name="HeadingName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[HeadingDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].ExternalColumns[HeadingDate]"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[HeadingDate]"
+                      name="HeadingDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[HeadingStatus]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].ExternalColumns[HeadingStatus]"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].Columns[HeadingStatus]"
+                      name="HeadingStatus"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].ExternalColumns[WriterID]"
+                      dataType="i4"
+                      name="WriterID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].ExternalColumns[WriterName]"
+                      dataType="wstr"
+                      length="50"
+                      name="WriterName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].ExternalColumns[WriterSurname]"
+                      dataType="wstr"
+                      length="50"
+                      name="WriterSurname" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].ExternalColumns[WriterMail]"
+                      dataType="wstr"
+                      length="200"
+                      name="WriterMail" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].ExternalColumns[WriterPassword]"
+                      dataType="wstr"
+                      length="200"
+                      name="WriterPassword" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].ExternalColumns[WriterAbout]"
+                      dataType="wstr"
+                      length="100"
+                      name="WriterAbout" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].ExternalColumns[WriterTitle]"
+                      dataType="wstr"
+                      length="50"
+                      name="WriterTitle" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].ExternalColumns[WriterStatuss]"
+                      dataType="bool"
+                      name="WriterStatuss" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].ExternalColumns[HeadingID]"
+                      dataType="i4"
+                      name="HeadingID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].ExternalColumns[HeadingName]"
+                      dataType="wstr"
+                      length="50"
+                      name="HeadingName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].ExternalColumns[HeadingDate]"
+                      dataType="dbTimeStamp"
+                      name="HeadingDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output].ExternalColumns[HeadingStatus]"
+                      dataType="bool"
+                      name="HeadingStatus" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[WriterID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[WriterID]"
+                      name="WriterID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[WriterName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[WriterName]"
+                      name="WriterName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[WriterSurname]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[WriterSurname]"
+                      name="WriterSurname" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[WriterMail]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[WriterMail]"
+                      name="WriterMail" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[WriterPassword]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[WriterPassword]"
+                      name="WriterPassword" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[WriterAbout]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[WriterAbout]"
+                      name="WriterAbout" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[WriterTitle]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[WriterTitle]"
+                      name="WriterTitle" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[WriterStatuss]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[WriterStatuss]"
+                      name="WriterStatuss" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[HeadingID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[HeadingID]"
+                      name="HeadingID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[HeadingName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[HeadingName]"
+                      name="HeadingName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[HeadingDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[HeadingDate]"
+                      name="HeadingDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[HeadingStatus]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[HeadingStatus]"
+                      name="HeadingStatus" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\DWH FactMainWriters Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\STG Writers Headigs Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task"
+          TopLeft="207.499991754691,134.333334400919" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="236.8,41.6"
+          Id="Package\Data Flow Task\DWH FactMainWriters Destination"
+          TopLeft="407.142853290857,217.584315570879" />
+        <NodeLayout
+          Size="212,41.6"
+          Id="Package\Data Flow Task\STG Writers Headigs Source"
+          TopLeft="424.99999560061,89.9294124886954" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="528.271424445733,131.529412488695">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,86.0549030821839"
+              Start="0,0"
+              End="0,78.5549030821839">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,78.5549030821839" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\DWH FactMainWriters Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\STG Writers Headigs Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
